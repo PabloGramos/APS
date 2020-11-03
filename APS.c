@@ -112,7 +112,7 @@ void sct(){
 
 int main(){
 	int op,r=1;
-	//  DICA ADICIONAR O PONTEIRO ANTES DO WHILE PARA QUANDO FOR CHAMADO ELE ATUALIZAR UM EMBAIXO DO OUTRO
+	FILE *file;
 	while(r>0){
 		inicio();
 	printf("Escolha a operacao\n");
@@ -140,7 +140,11 @@ int main(){
 		sct();
 	}
 	else if(op == 7){
-		printf("     Historico    \n");
+		file = fopen("dados.txt","r");
+		int g;
+		fscanf(file,"%i",&g);
+		printf("%i",g);
+		fclose(file);
 	}
 	else{
 		printf("Opcao Invalida!\n\n");
