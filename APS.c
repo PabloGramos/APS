@@ -112,7 +112,7 @@ void sct(){
 
 int main(){
 	int op,r=1;
-	FILE *file;
+	FILE *arquivo;
 	while(r>0){
 		inicio();
 	printf("Escolha a operacao\n");
@@ -140,11 +140,15 @@ int main(){
 		sct();
 	}
 	else if(op == 7){
-		file = fopen("dados.txt","r");
+		arquivo = fopen("dados.txt","r");
 		int g;
-		fscanf(file,"%i",&g);
+		fscanf(arquivo,"%i",&g);
+		if(arquivo == NULL){
+			printf("Arquivo nao encontrado! \n");
+		}
 		printf("%i",g);
-		fclose(file);
+		
+		fclose(arquivo);
 	}
 	else{
 		printf("Opcao Invalida!\n\n");
