@@ -15,19 +15,20 @@ void inicio (void){
 	printf("7 - Historico\n");
 	printf("0 - Sair\n\n");
 }
-void soma(){
-	int r=1,n1,n2,soma;
+int soma(){
+	int r=1,n1,n2,resu;
 	while(r>0){
 		printf("Insira o valor: ");
 		scanf("%d",&n1);
 		printf("%d + ",n1);
 		scanf("%d",&n2);
-		soma=n1+n2;
-		printf("%d + %d = %d\n\n",n1,n2,soma);
+		resu=n1+n2;
+		printf("%d + %d = %d\n\n",n1,n2,resu);
 		printf("1-Continuar 0-Sair: \n");
 		scanf("%d",&r);
 		
 	}
+	return(n1,n2,soma);
 }
 void sub(){
 	int r=1,n1,n2,sub;
@@ -110,9 +111,10 @@ void sct(){
 }
 }
 
-int main(){
+int main(void){
 	int op,r=1;
 	FILE *arquivo;
+	arquivo = fopen("dados.txt","w");
 	while(r>0){
 		inicio();
 	printf("Escolha a operacao\n");
@@ -122,7 +124,9 @@ int main(){
 		break;
 	}
 	else if(op == 1){
+		int n1,n2,resu;
 		soma();
+		printf("%d + %d = %d\n",n1,n2,resu);
 	}
 	else if(op == 2){
 		sub();
@@ -139,7 +143,7 @@ int main(){
 	else if(op == 6){
 		sct();
 	}
-	else if(op == 7){
+	else if(op == 7){		
 		arquivo = fopen("dados.txt","r");
 		int g;
 		fscanf(arquivo,"%i",&g);
