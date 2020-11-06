@@ -16,152 +16,165 @@ void inicio (void){
 	printf("0 - Sair\n\n");
 }
 int soma(int n1,int n2){
-	int r=1,resu;
-	while(r>0){
-		resu=n1+n2;
-		printf("%d + %d = %d\n\n",n1,n2,resu);
-		printf("1-Continuar 0-Sair: \n");
-		scanf("%d",&r);
-	}
+	int resu;
+	resu=n1+n2;
 	return(resu);
 }
 int sub(int n1,int n2){
-	int r=1,sub;
-	while(r>0){
-		sub=n1-n2;
-		printf("%d - %d = %d\n\n",n1,n2,sub);
-		printf("1-Continuar 0-Sair: \n");
-		scanf("%d",&r);
+	int resu;
+	resu=n1-n2;
+	printf("%d - %d = %d\n\n",n1,n2,resu);
+	return(resu);
 }
+
+int mult(int n1,int n2){
+	int resu;
+	resu=n1*n2;
+	printf("%d X %d = %d\n\n",n1,n2,resu);
+	return(resu);
 }
-int mult(){
-	int r=1,n1,n2,mult;
-	while(r>0){
-		
-		
-		printf("Insira o valor: ");
-		scanf("%d",&n1);
-		printf("%d X ",n1);
-		scanf("%d",&n2);
-		mult=n1*n2;
-		printf("%d X %d = %d\n\n",n1,n2,mult);
-		printf("1-Continuar 0-Sair: \n");
-		scanf("%d",&r);
+float divi(int n1,int n2){
+	float resuf;
+	resuf=n1/n2;
+	return(resuf);
 }
+
+float raiz(int n){
+	float resuf;
+	resuf=sqrt(n);
+	return(resuf);
 }
-float divi(){
-	int r=1,n1,n2;
-	float divi;
-	while(r>0){
-		printf("Insira o valor: ");
-		scanf("%d",&n1);
-		printf("%d / ",n1);
-		scanf("%d",&n2);
-		if(n2==0){
-			printf("Nao existe divisao por 0!\n\n");
-			break;
-		}
-		divi=n1/n2;
-		printf("%d / %d = %.2f\n\n",n1,n2,divi);
-		printf("1-Continuar 0-Sair: \n");
-		scanf("%d",&r);
+
+float seno(int n){
+	float seno;
+	seno=sin(n);
+	return(seno);
 }
+float cosseno(int n){
+	float cosseno;
+	cosseno=cos(n);
+	return(cosseno);
 }
-int raiz(){
-	int r=1;
-	float n,raiz;
-	while(r>0){
-		printf("Insira o valor: ");
-		scanf("%f",&n);
-		if(n<0){
-			printf("Nao existe raiz de numeros negativos!\n\n");
-			break;
-		}
-		raiz=sqrt(n);
-		printf("Raiz de %.2f = %.2f\n\n",n,raiz);
-		printf("1-Continuar 0-Sair: \n");
-		scanf("%d",&r);
+float tang(int n){
+	float tang;
+	tang=tan(n);
+	return(tang);
 }
-}
-float sct(int n){
-	int r=1;
-	float seno,cosseno,tang;
-	while(r>0){
-		seno=sin(n);
-		cosseno=cos(n);
-		tang=tan(n);
-		printf("Seno de %d = %.2f\n",n,seno);
-		printf("Cosseno de %d = %.2f\n",n,cosseno);
-		printf("Tangente de %d = %.2f\n\n",n,tang);
-		printf("1-Continuar 0-Sair: \n");
-		scanf("%d",&r);
-}
-}
+
+// CORPO DO CODIGO *********************************************************************************************************************
 
 int main(){
-	int op,r=1,n,n1,n2;
+	int op,j=1,r=1,n,n1,n2;
+	int resu;
+	float resuf;
 	FILE *arquivo;
 	arquivo = fopen("dados.txt","w");
-	while(r>0){
+	while(j>0){
 		inicio();
-	printf("Escolha a operacao\n");
-	scanf("%d",&op);
-	
-	if(op == 0){
-		break;
-	}
-	else if(op == 1){
-		int n1,n2;
-		printf("Insira o valor: ");
-		scanf("%d",&n1);
-		printf("%d + ",n1);
-		scanf("%d",&n2);
-		soma(n1,n2);
-		
-	}
-	else if(op == 2){
-		int n1,n2;
-		printf("Insira o valor: ");
-		scanf("%d",&n1);
-		printf("%d - ",n1);
-		scanf("%d",&n2);
-		sub(n1,n2);
-	}
-	else if(op == 3){
-		mult();
-	}
-	else if(op == 4){
-		divi();
-	}
-	else if(op == 5){
-		raiz();
-	}
-	else if(op == 6){
-		printf("Insira o valor: ");
-		scanf("%d",&n);
-		sct(n);
-		
-		
-		
-	}
-	else if(op == 7){		
-		arquivo = fopen("dados.txt","r");
-		int g;
-		fscanf(arquivo,"%i",&g);
-		if(arquivo == NULL){
-			printf("Arquivo nao encontrado! \n");
+		printf("Escolha a operacao\n");
+		scanf("%d",&op);
+		if(op == 0){
+			break;
 		}
-		printf("%i",g);
-		
-		fclose(arquivo);
-	}
-	else{
-		printf("Opcao Invalida!\n\n");
-	}
-	
-	
-	}
+		else if(op == 1){
+			r=1;
+			while(r>0){
+				printf("Insira o valor: ");
+				scanf("%d",&n1);
+				printf("%d + ",n1);
+				scanf("%d",&n2);
+				resu = soma(n1,n2);
+				printf("%d + %d = %d\n\n",n1,n2,resu);
+			printf("1-Continuar 0-Sair: \n");
+			scanf("%d",&r);
+		}
+		}
+		else if(op == 2){
+			r=1;
+			while(r>0){
+				printf("Insira o valor: ");
+				scanf("%d",&n1);
+				printf("%d - ",n1);
+				scanf("%d",&n2);
+				resu = sub(n1,n2);
+				printf("1-Continuar 0-Sair: \n");
+				scanf("%d",&r);
+		}
+		}
+		else if(op == 3){
+			r=1;
+			while(r>0){
+				printf("Insira o valor: ");
+				scanf("%d",&n1);
+				printf("%d X ",n1);
+				scanf("%d",&n2);
+				resu = mult(n1,n2);
+				printf("1-Continuar 0-Sair: \n");
+				scanf("%d",&r);
+		}
+		}
+		else if(op == 4){
+			r=1;
+			while(r>0){
+				printf("Insira o valor: ");
+				scanf("%d",&n1);
+				printf("%d / ",n1);
+				scanf("%d",&n2);
+				if(n2==0){
+					printf("Nao existe divisao por 0!\n\n");
+					break;
+				}
+				resuf = divi(n1,n2);
+				printf("%d / %d = %.2f\n\n",n1,n2,resuf);
+				printf("1-Continuar 0-Sair: \n");
+				scanf("%d",&r);
+		}
+		}
+		else if(op == 5){
+			r=1;
+			while(r>0){
+				printf("Insira o valor: ");
+				scanf("%d",&n);
+				if(n<0){
+					printf("Nao existe raiz de numeros negativos!\n\n");
+					break;
+				}
+				resuf = raiz(n);
+				printf("Raiz de %d = %.2f\n\n",n,resuf);
+				printf("1-Continuar 0-Sair: \n");
+				scanf("%d",&r);
+		}
+		}
+		else if(op == 6){
+			float s,c,t;
+			r=1;
+			while(r>0){
+				printf("Insira o valor: ");
+				scanf("%d",&n);
+				s = seno(n);
+				c = cosseno(n);
+				t = tang(n);
+				printf("Seno de %d = %.2f\n",n,s);
+				printf("Cosseno de %d = %.2f\n",n,c);
+				printf("Tangente de %d = %.2f\n\n",n,t);
+				printf("1-Continuar 0-Sair: \n");
+				scanf("%d",&r);
+		}
+		}
+		else if(op == 7){		
+			arquivo = fopen("dados.txt","r");
+			int g;
+			fscanf(arquivo,"%i",&g);
+			if(arquivo == NULL){
+				printf("Arquivo nao encontrado! \n");
+			}
+			printf("%i",g);
+			
+			fclose(arquivo);
+		}
+		else{
+			printf("Opcao Invalida!\n\n");
+		}
+		}
 	return 0;
 }
-
-
