@@ -15,37 +15,26 @@ void inicio (void){
 	printf("7 - Historico\n");
 	printf("0 - Sair\n\n");
 }
-int soma(){
-	int r=1,n1,n2,resu;
+int soma(int n1,int n2){
+	int r=1,resu;
 	while(r>0){
-		printf("Insira o valor: ");
-		scanf("%d",&n1);
-		printf("%d + ",n1);
-		scanf("%d",&n2);
 		resu=n1+n2;
 		printf("%d + %d = %d\n\n",n1,n2,resu);
 		printf("1-Continuar 0-Sair: \n");
 		scanf("%d",&r);
-		
 	}
-	return(n1,n2,soma);
+	return(resu);
 }
-void sub(){
-	int r=1,n1,n2,sub;
+int sub(int n1,int n2){
+	int r=1,sub;
 	while(r>0){
-		
-		
-		printf("Insira o valor: ");
-		scanf("%d",&n1);
-		printf("%d - ",n1);
-		scanf("%d",&n2);
 		sub=n1-n2;
 		printf("%d - %d = %d\n\n",n1,n2,sub);
 		printf("1-Continuar 0-Sair: \n");
 		scanf("%d",&r);
 }
 }
-void mult(){
+int mult(){
 	int r=1,n1,n2,mult;
 	while(r>0){
 		
@@ -60,7 +49,7 @@ void mult(){
 		scanf("%d",&r);
 }
 }
-void divi(){
+float divi(){
 	int r=1,n1,n2;
 	float divi;
 	while(r>0){
@@ -78,7 +67,7 @@ void divi(){
 		scanf("%d",&r);
 }
 }
-void raiz(){
+int raiz(){
 	int r=1;
 	float n,raiz;
 	while(r>0){
@@ -94,25 +83,23 @@ void raiz(){
 		scanf("%d",&r);
 }
 }
-void sct(){
+float sct(int n){
 	int r=1;
-	float n,seno,cosseno,tang;
+	float seno,cosseno,tang;
 	while(r>0){
-		printf("Insira o valor: ");
-		scanf("%f",&n);
 		seno=sin(n);
 		cosseno=cos(n);
 		tang=tan(n);
-		printf("Seno de %.2f = %.2f\n",n,seno);
-		printf("Cosseno de %.2f = %.2f\n",n,cosseno);
-		printf("Tangente de %.2f = %.2f\n\n",n,tang);
+		printf("Seno de %d = %.2f\n",n,seno);
+		printf("Cosseno de %d = %.2f\n",n,cosseno);
+		printf("Tangente de %d = %.2f\n\n",n,tang);
 		printf("1-Continuar 0-Sair: \n");
 		scanf("%d",&r);
 }
 }
 
-int main(void){
-	int op,r=1;
+int main(){
+	int op,r=1,n,n1,n2;
 	FILE *arquivo;
 	arquivo = fopen("dados.txt","w");
 	while(r>0){
@@ -124,12 +111,21 @@ int main(void){
 		break;
 	}
 	else if(op == 1){
-		int n1,n2,resu;
-		soma();
-		printf("%d + %d = %d\n",n1,n2,resu);
+		int n1,n2;
+		printf("Insira o valor: ");
+		scanf("%d",&n1);
+		printf("%d + ",n1);
+		scanf("%d",&n2);
+		soma(n1,n2);
+		
 	}
 	else if(op == 2){
-		sub();
+		int n1,n2;
+		printf("Insira o valor: ");
+		scanf("%d",&n1);
+		printf("%d - ",n1);
+		scanf("%d",&n2);
+		sub(n1,n2);
 	}
 	else if(op == 3){
 		mult();
@@ -141,7 +137,12 @@ int main(void){
 		raiz();
 	}
 	else if(op == 6){
-		sct();
+		printf("Insira o valor: ");
+		scanf("%d",&n);
+		sct(n);
+		
+		
+		
 	}
 	else if(op == 7){		
 		arquivo = fopen("dados.txt","r");
