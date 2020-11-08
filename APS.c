@@ -23,14 +23,12 @@ int soma(int n1,int n2){
 int sub(int n1,int n2){
 	int resu;
 	resu=n1-n2;
-	printf("%d - %d = %d\n\n",n1,n2,resu);
 	return(resu);
 }
 
 int mult(int n1,int n2){
 	int resu;
 	resu=n1*n2;
-	printf("%d X %d = %d\n\n",n1,n2,resu);
 	return(resu);
 }
 float divi(int n1,int n2){
@@ -85,8 +83,12 @@ int main(){
 				scanf("%d",&n2);
 				resu = soma(n1,n2);
 				printf("%d + %d = %d\n\n",n1,n2,resu);
+				fprintf(arquivo,"%d + %d = %d \n",n1,n2,resu);
+				
 			printf("1-Continuar 0-Sair: \n");
+			fclose(arquivo);
 			scanf("%d",&r);
+			
 		}
 		}
 		else if(op == 2){
@@ -97,8 +99,11 @@ int main(){
 				printf("%d - ",n1);
 				scanf("%d",&n2);
 				resu = sub(n1,n2);
+				printf("%d - %d = %d\n\n",n1,n2,resu);
+				fprintf(arquivo,"%d - %d = %d \n",n1,n2,resu);
 				printf("1-Continuar 0-Sair: \n");
 				scanf("%d",&r);
+				
 		}
 		}
 		else if(op == 3){
@@ -109,8 +114,11 @@ int main(){
 				printf("%d X ",n1);
 				scanf("%d",&n2);
 				resu = mult(n1,n2);
+				printf("%d X %d = %d\n\n",n1,n2,resu);
+				fprintf(arquivo,"%d x %d = %d \n",n1,n2,resu);
 				printf("1-Continuar 0-Sair: \n");
 				scanf("%d",&r);
+				
 		}
 		}
 		else if(op == 4){
@@ -126,8 +134,10 @@ int main(){
 				}
 				resuf = divi(n1,n2);
 				printf("%d / %d = %.2f\n\n",n1,n2,resuf);
+				fprintf(arquivo,"%d / %d = %d \n",n1,n2,resu);
 				printf("1-Continuar 0-Sair: \n");
 				scanf("%d",&r);
+				
 		}
 		}
 		else if(op == 5){
@@ -141,8 +151,10 @@ int main(){
 				}
 				resuf = raiz(n);
 				printf("Raiz de %d = %.2f\n\n",n,resuf);
+				fprintf(arquivo,"Raiz de %d = %.2f\n\n",n,resuf);
 				printf("1-Continuar 0-Sair: \n");
 				scanf("%d",&r);
+				
 		}
 		}
 		else if(op == 6){
@@ -157,21 +169,33 @@ int main(){
 				printf("Seno de %d = %.2f\n",n,s);
 				printf("Cosseno de %d = %.2f\n",n,c);
 				printf("Tangente de %d = %.2f\n\n",n,t);
+				fprintf(arquivo,"Seno de %d = %.2f\n",n,s);
+				fprintf(arquivo,"Cosseno de %d = %.2f\n",n,c);
+				fprintf(arquivo,"Tangente de %d = %.2f\n\n",n,t);
 				printf("1-Continuar 0-Sair: \n");
 				scanf("%d",&r);
+				
 		}
 		}
+		
+		
+		// HISTORICO-----------------HISTORICO--------------------------------------------------------------------------------------------------------------------
+		
+		
 		else if(op == 7){		
 			arquivo = fopen("dados.txt","r");
-			int g;
-			fscanf(arquivo,"%i",&g);
-			if(arquivo == NULL){
-				printf("Arquivo nao encontrado! \n");
-			}
-			printf("%i",g);
+			char g[1000];
+			fgets(arquivo,"%s",&g);
 			
-			fclose(arquivo);
+			printf("%s",g);
+		//	while(fgets(g, 1000, arquivos) != NULL){
+		//
+		//	printf("%s", arquivo);
+		//	fclose(arquivo);
+		//	}
 		}
+		
+		
 		else{
 			printf("Opcao Invalida!\n\n");
 		}
