@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
+#include<conio.h>
 
 void inicio (void){
 	printf("------------CALCULADORA--------------\n");
@@ -59,14 +60,14 @@ float tang(int n){
 	return(tang);
 }
 
-// CORPO DO CODIGO *********************************************************************************************************************
-
 int main(){
 	int op,j=1,r=1,n,n1,n2;
 	int resu;
 	float resuf;
 	FILE *arquivo;
 	arquivo = fopen("dados.txt","w");
+	fprintf(arquivo,"--------------Historico---------------\n");
+	fclose(arquivo);
 	while(j>0){
 		inicio();
 		printf("Escolha a operacao\n");
@@ -83,7 +84,9 @@ int main(){
 				scanf("%d",&n2);
 				resu = soma(n1,n2);
 				printf("%d + %d = %d\n\n",n1,n2,resu);
+				arquivo = fopen("dados.txt","a");
 				fprintf(arquivo,"%d + %d = %d \n",n1,n2,resu);
+				fclose(arquivo);
 				
 			printf("1-Continuar 0-Sair: \n");
 			fclose(arquivo);
@@ -100,7 +103,9 @@ int main(){
 				scanf("%d",&n2);
 				resu = sub(n1,n2);
 				printf("%d - %d = %d\n\n",n1,n2,resu);
+				arquivo = fopen("dados.txt","a");
 				fprintf(arquivo,"%d - %d = %d \n",n1,n2,resu);
+				fclose(arquivo);
 				printf("1-Continuar 0-Sair: \n");
 				scanf("%d",&r);
 				
@@ -115,7 +120,9 @@ int main(){
 				scanf("%d",&n2);
 				resu = mult(n1,n2);
 				printf("%d X %d = %d\n\n",n1,n2,resu);
+				arquivo = fopen("dados.txt","a");
 				fprintf(arquivo,"%d x %d = %d \n",n1,n2,resu);
+				fclose(arquivo);
 				printf("1-Continuar 0-Sair: \n");
 				scanf("%d",&r);
 				
@@ -134,7 +141,9 @@ int main(){
 				}
 				resuf = divi(n1,n2);
 				printf("%d / %d = %.2f\n\n",n1,n2,resuf);
+				arquivo = fopen("dados.txt","a");
 				fprintf(arquivo,"%d / %d = %d \n",n1,n2,resu);
+				fclose(arquivo);
 				printf("1-Continuar 0-Sair: \n");
 				scanf("%d",&r);
 				
@@ -151,7 +160,9 @@ int main(){
 				}
 				resuf = raiz(n);
 				printf("Raiz de %d = %.2f\n\n",n,resuf);
-				fprintf(arquivo,"Raiz de %d = %.2f\n\n",n,resuf);
+				arquivo = fopen("dados.txt","a");
+				fprintf(arquivo,"Raiz de %d = %.2f\n",n,resuf);
+				fclose(arquivo);
 				printf("1-Continuar 0-Sair: \n");
 				scanf("%d",&r);
 				
@@ -169,30 +180,23 @@ int main(){
 				printf("Seno de %d = %.2f\n",n,s);
 				printf("Cosseno de %d = %.2f\n",n,c);
 				printf("Tangente de %d = %.2f\n\n",n,t);
+				arquivo = fopen("dados.txt","a");
 				fprintf(arquivo,"Seno de %d = %.2f\n",n,s);
 				fprintf(arquivo,"Cosseno de %d = %.2f\n",n,c);
 				fprintf(arquivo,"Tangente de %d = %.2f\n\n",n,t);
+				fclose(arquivo);
 				printf("1-Continuar 0-Sair: \n");
 				scanf("%d",&r);
 				
 		}
-		}
-		
-		
-		// HISTORICO-----------------HISTORICO--------------------------------------------------------------------------------------------------------------------
-		
-		
+		}		
 		else if(op == 7){		
 			arquivo = fopen("dados.txt","r");
-			char g[1000];
-			fgets(arquivo,"%s",&g);
-			
-			printf("%s",g);
-		//	while(fgets(g, 1000, arquivos) != NULL){
-		//
-		//	printf("%s", arquivo);
-		//	fclose(arquivo);
-		//	}
+			char leitura[100];
+			while(fgets(leitura, 100,arquivo) != NULL){
+				printf("%s\n", leitura);
+			}
+			fclose(arquivo);
 		}
 		
 		
